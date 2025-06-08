@@ -3,7 +3,7 @@
 #define TRAIN_H
 
 class Train {
- private:
+private:
     struct Car {
         bool light;
         Car* next;
@@ -13,13 +13,11 @@ class Train {
     Car* first;
     int countOp;
 
- public:
+public:
     Train();
-    ~Train();
     void addCar(bool light);
     int getLength();
     int getOpCount();
-    void reset();
 };
 
 #endif // TRAIN_H
