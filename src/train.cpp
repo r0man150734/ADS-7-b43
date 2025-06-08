@@ -33,12 +33,12 @@ void Train::addCar(bool light) {
 int Train::getLength() {
     countOp = 0;
     Car* current = first;
-    current->light = false;
 
-    int step = 1;
+    int k = 1;
     while (true) {
         Car* walker = current;
-        for (int i = 0; i < step; ++i) {
+        // шаг вперёд на k вагонов
+        for (int i = 0; i < k; ++i) {
             walker = walker->next;
             ++countOp;
         }
@@ -46,19 +46,21 @@ int Train::getLength() {
         if (!walker->light) {
             walker->light = true;
 
-            for (int i = 0; i < step; ++i) {
+            // шаг назад на k вагонов
+            for (int i = 0; i < k; ++i) {
                 walker = walker->prev;
                 ++countOp;
             }
 
             if (walker->light) {
-                return step;
+                return k;
             }
         }
 
-        ++step;
+        ++k;
     }
 }
+
 
 int Train::getOpCount() {
     return countOp;
