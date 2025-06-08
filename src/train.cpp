@@ -34,7 +34,7 @@ int Train::getLength() {
         Car* walker = current;
         for (int i = 0; i < step; ++i) {
             walker = walker->next;
-            ++countOp;
+            countOp += 2;
         }
 
         if (!walker->light) {
